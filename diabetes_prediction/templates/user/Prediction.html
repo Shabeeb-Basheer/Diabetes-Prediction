@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="predictionadd">
+  <table width="200" border="1">
+    <tr>
+      <td>Pregnancies</td>
+      <td><label>
+        <input type="text" name="textfield" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Glucose</td>
+      <td><label>
+        <input type="text" name="textfield2" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Blood Pressure </td>
+      <td><label>
+        <input type="text" name="textfield3" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Skin Thickness </td>
+      <td><label>
+        <input type="text" name="textfield4" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Insulin</td>
+      <td><label>
+        <input type="text" name="textfield5" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>BMI</td>
+      <td><label>
+        <input type="text" name="textfield6" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Diabetes Pedigree Function </td>
+      <td><label>
+        <input type="text" name="textfield7" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td><label>
+        <input type="text" name="textfield8" />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2"><label>
+        <div align="center">
+          <input type="submit" name="Submit" value="Predict" />
+        </div>
+      </label></td>
+    </tr>
+
+    <tr>
+
+
+
+
+
+
+
+    </tr>
+  </table>
+  
+  <table width="200" border="1">
+    <tr>
+      <td>algorithm</td>
+      <td>prediction</td>
+      <td>Score</td>
+    </tr>
+    <tr>
+      <td>Random forest </td>
+      <td>
+        {% if rd == "1" %}
+      yes
+       {% elif rd == "0" %}
+         no
+       {% else %}
+
+      {% endif %}</td>
+      <td>{{rds}}</td>
+    </tr>
+    <tr>
+      <td>Svm</td>
+      <td>   {% if sv == "1" %}
+      yes
+       {% elif sv == "0" %}
+         no
+      {% else %}
+
+      {% endif %}</td>
+      <td>{{sv2}}</td>
+    </tr>
+    <tr>
+      <td>Decision Tree </td>
+      <td> {% if dc == "1" %}
+       yes
+
+      {% elif dc == "0" %}
+        no
+      {% else %}
+
+      {% endif %}
+</td>
+      <td>{{dc2}}</td>
+    </tr>
+  </table>
+</form>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from diabetes.models import *
+from perdiction import random_forest, mysvm, decisiontree
 
 
 def main(request):
@@ -86,6 +87,7 @@ def expertedit(request):
     phone = request.POST['textfield6']
     email = request.POST['textfield7']
     qualification = request.POST['textfield8']
+
     iob = expert.objects.get(id=request.session['eid'])
     iob.fname = fname
     iob.lname = lname
@@ -321,8 +323,26 @@ def logout(request):
 
 
 
+def prediction(request):
+    return render(request,"user/Prediction.html")
+
+def predictionadd(request):
+    pregnancies = request.POST['textfield']
+    glucose = request.POST['textfield2']
+    bloodpressure = request.POST['textfield3']
+    skinthickness = request.POST['textfield4']
+    insulin = request.POST['textfield5']
+    bmi = request.POST['textfield6']
+    diabetespedigreefunction = request.POST['textfield7']
+    age = request.POST['textfield8']
+    rd1,rd2 = random_forest(pregnancies,glucose,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
+    sv1,sv = mysvm(pregnancies,glucose,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
+    dc1,dc = decisiontree(pregnancies,glucose,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
+
+    print(rd1,"eeeeeeeeee")
 
 
+    return render(request,"user/Prediction.html",{'rd':str(rd1),'sv':str(sv1),'dc':str(dc1),'rds':str(rd2),'sv2':sv,'dc2':dc})
 
 
 

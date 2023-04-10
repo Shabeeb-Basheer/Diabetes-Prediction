@@ -45,6 +45,8 @@ urlpatterns=[
     path('expertadd',views.expertadd,name="expertadd"),
     path('notificationadd',views.notificationadd,name="notificationadd"),
     path('tipsadd',views.tipsadd,name="tipsadd"),
+    path('predictionadd',views.predictionadd,name="predictionadd"),
+    path('prediction',views.prediction,name="prediction"),
 
 
 
