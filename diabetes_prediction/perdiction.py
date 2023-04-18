@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.naive_bayes import GaussianNB
@@ -38,7 +39,7 @@ def mysvm(t1,t2,t3,t4,t5,t6,t7,t8):
 
 
 def decisiontree(t1,t2,t3,t4,t5,t6,t7,t8):
-    dcclassifier = DecisionTreeClassifier(random_state=0)
+    dcclassifier = DecisionTreeClassifier()
     dcclassifier.fit(X_train,y_train)
     lst = [[t1,t2,t3,t4,t5,t6,t7,t8]]
     lst = np.array(lst)
@@ -47,5 +48,19 @@ def decisiontree(t1,t2,t3,t4,t5,t6,t7,t8):
     ab = dcclassifier.score(X_test,y_test)
     return presult[0],ab
 
+def logistic_regression(t1,t2,t3,t4,t5,t6,t7,t8):
+    classifier = LogisticRegression(random_state=0)
+    classifier.fit(X_train, y_train)
+    lst = [[t1, t2, t3, t4, t5, t6, t7, t8]]
+    lst = np.array(lst)
+    lst.reshape(-1, 1)
+    presult = classifier.predict(lst)
+    ab = classifier.score(X_test, y_test)
+    return presult[0], ab
+
+
+
 print(X)
 print(y)
+
+# print("Logistic Regression ",logistic_regression(1,85,66,29,0,26.6,0.351,31))

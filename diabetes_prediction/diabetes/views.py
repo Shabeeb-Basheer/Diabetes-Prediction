@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from diabetes.models import *
-from perdiction import random_forest, mysvm, decisiontree
+from perdiction import random_forest, mysvm, decisiontree,logistic_regression
 
 
 def main(request):
@@ -338,11 +338,11 @@ def predictionadd(request):
     rd1,rd2 = random_forest(pregnancies,glucose,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
     sv1,sv = mysvm(pregnancies,glucose,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
     dc1,dc = decisiontree(pregnancies,glucose,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
+    lr1,lr = logistic_regression(pregnancies,glucose,bloodpressure,skinthickness,insulin,bmi,diabetespedigreefunction,age)
 
-    print(rd1,"eeeeeeeeee")
 
 
-    return render(request,"user/Prediction.html",{'rd':str(rd1),'sv':str(sv1),'dc':str(dc1),'rds':str(rd2),'sv2':sv,'dc2':dc})
+    return render(request,"user/Prediction.html",{'rd':str(rd1),'sv':str(sv1),'dc':str(dc1),'rds':str(rd2),'sv2':str(sv),'dc2':str(dc),'lr2':str(lr),'lr':str(lr1)})
 
 
 
