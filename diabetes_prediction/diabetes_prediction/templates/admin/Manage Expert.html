@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="addexpert">
+<table width="200" border="1">
+  <tr>
+    <td>Name</td>
+    <td>Address</td>
+    <td>Phone</td>
+    <td>Email</td>
+    <td>Qualification</td>
+    <td>&nbsp;</td>
+  </tr>
+  {% for i in val %}
+  <tr>
+    <td>&nbsp;{{i.fname}} {{i.lname}}</td>
+    <td>&nbsp;{{i.place}} {{i.post}} {{i.pin}}</td>
+    <td>&nbsp;{{i.phone}}</td>
+    <td>&nbsp;{{i.email}}</td>
+    <td>&nbsp;{{i.qualification}}</td>
+    <td><p><a href="{% url 'editexpert'  id=i.id %}">Edit</a></p>
+        <p><a href="{% url 'deleteexpert' id=i.lid.id %}">Delete</a></p></td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <td colspan="6">
+      <label>
+        <div align="center">
+          <input type="submit" name="Submit" value="ADD" />
+        </div>
+      </label>
+    </td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
